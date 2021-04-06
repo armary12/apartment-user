@@ -1,89 +1,122 @@
 <template>
+<v-container grid-list-md>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
+      <div class="text-center ma-4">
+        <v-card>
+          <v-row>
+            <v-col cols="12" sm="4" align-self="center">
+              <v-avatar size="50" color="grey"></v-avatar>
+            </v-col>
+            <v-col cols="12" sm="4">
+              <v-list-item two-line>
+                <v-list-item-content>
+                  <v-list-item-title>ห้อง 3310</v-list-item-title>
+                  <v-list-item-subtitle>คุณชลทิศ จิตรบุตร</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-col>
+          </v-row>
+        </v-card>
       </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+      <v-card class="ma-4">
+        <v-row>
+          <v-col align-self="center"><v-icon>mdi-flash</v-icon></v-col>
+          <v-col align-self="center">203 Baht</v-col>
+          <v-col align-self="center"><v-icon>mdi-water</v-icon></v-col>
+          <v-col align-self="center">30 Baht</v-col>
+        </v-row>
+      </v-card>
+      <v-card class="ma-4">
+        <v-list two-line>
+          <v-list-item-group
+            v-model="selected"
+            active-class="pink--text"
+            multiple
           >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
+            <template v-for="(item, index) in items">
+              <v-list-item :key="item.title">
+                <template v-slot:default="{ active }">
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.title"></v-list-item-title>
+
+                    <v-list-item-subtitle
+                      class="text--primary"
+                      v-text="item.headline"
+                    ></v-list-item-subtitle>
+
+                    <v-list-item-subtitle>จำนวนเงิน : {{
+                      item.subtitle
+                     }} บาท</v-list-item-subtitle>
+                  </v-list-item-content>
+
+                  <v-list-item-action>
+                    <v-list-item-action-text
+                      v-text="item.action"
+                    ></v-list-item-action-text>
+
+                    <v-icon v-if="!active" color="orange lighten-1">
+                      mdi-check
+                    </v-icon>
+
+                    <v-icon v-else color="red darken-3">
+                      mdi-close-outline
+                    </v-icon>
+                  </v-list-item-action>
+                </template>
+              </v-list-item>
+
+              <v-divider
+                v-if="index < items.length - 1"
+                :key="index"
+              ></v-divider>
+            </template>
+          </v-list-item-group>
+        </v-list>
       </v-card>
     </v-col>
   </v-row>
+  </v-container>
+
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  }
-}
+  components: {},
+  data: () => ({
+    selected: [2],
+    items: [
+      {
+        action: "ยังไม่ชำระ",
+        headline: "ห้อง 3310",
+        subtitle: `2455`,
+        title: "มิถุนายน"
+      },
+      {
+        action: "ชำระแล้ว",
+        headline: "ห้อง 3310",
+        subtitle: `2784`,
+        title: "เมษายน"
+      },
+      {
+        action: "ชำระแล้ว",
+        headline: "ห้อง 3310",
+        subtitle: "3056",
+        title: "มีนาคม"
+      },
+      {
+        action: "ชำระแล้ว",
+        headline: "ห้อง 3310",
+        subtitle: "2400",
+        title: "กุมภาพันธ์"
+      },
+      {
+        action: "ชำระแล้ว",
+        headline: "ห้อง 3310",
+        subtitle: "2592",
+        title: "มกราคม"
+      }
+    ]
+  })
+};
 </script>
