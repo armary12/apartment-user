@@ -12,7 +12,7 @@
               <v-list-item two-line>
                 <v-list-item-content>
                   <v-list-item-title>ห้อง 3310</v-list-item-title>
-                  <v-list-item-subtitle>คุณชลทิศ จิตรบุตร</v-list-item-subtitle>
+                  <v-list-item-subtitle>คุณชลทิศ จิตรบุตรร</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
             </v-col>
@@ -21,9 +21,9 @@
       </div>
       <v-card class="ma-4">
         <v-row>
-          <v-col align-self="center"><v-icon>mdi-flash</v-icon></v-col>
+          <v-col align-self="center"><v-icon class="ml-15" color="yellow darken-2">mdi-flash</v-icon></v-col>
           <v-col align-self="center">203 Baht</v-col>
-          <v-col align-self="center"><v-icon>mdi-water</v-icon></v-col>
+          <v-col align-self="center"><v-icon class="ml-15" color="blue">mdi-water</v-icon></v-col>
           <v-col align-self="center">30 Baht</v-col>
         </v-row>
       </v-card>
@@ -55,6 +55,7 @@
                       v-text="item.action"
                     ></v-list-item-action-text>
 
+                    <v-btn class="ma-2" v-if="active"> แจ้งชำระ</v-btn>
                     <v-icon v-if="!active" color="orange lighten-1">
                       mdi-check
                     </v-icon>

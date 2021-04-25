@@ -105,7 +105,19 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inspire'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Comfirm payment',
+          to: '/confirm'
+        },
+                {
+          icon: 'mdi-chart-bubble',
+          title: 'Chat',
+          to: '/confirm'
         }
+
+
       ],
       miniVariant: false,
       right: true,
